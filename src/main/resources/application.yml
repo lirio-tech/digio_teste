@@ -1,0 +1,13 @@
+
+spring:
+  profiles: default, local
+  application:
+    name: digio-teste
+
+  data:
+    mongodb:
+      uri: mongodb://digio:digio123@ds119738.mlab.com:19738/digio-db?retryWrites=false
+      #socketTimeout: 7000
+      #connectTimeout: 1500
+      #minHeartbeatFrequency: 25
+      #heartbeatSocketTimeout: 3000
