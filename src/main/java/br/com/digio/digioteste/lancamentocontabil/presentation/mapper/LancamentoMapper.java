@@ -1,8 +1,8 @@
 package br.com.digio.digioteste.lancamentocontabil.presentation.mapper;
 
 import br.com.digio.digioteste.lancamentocontabil.domain.Lancamento;
-import br.com.digio.digioteste.lancamentocontabil.presentation.LancamentoResource;
-import br.com.digio.digioteste.lancamentocontabil.presentation.LancamentoResourceID;
+import br.com.digio.digioteste.lancamentocontabil.presentation.resources.LancamentoResource;
+import br.com.digio.digioteste.lancamentocontabil.presentation.resources.LancamentoResourceID;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

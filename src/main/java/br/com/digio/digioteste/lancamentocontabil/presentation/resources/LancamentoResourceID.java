@@ -1,4 +1,4 @@
-package br.com.digio.digioteste.lancamentocontabil.presentation;
+package br.com.digio.digioteste.lancamentocontabil.presentation.resources;
 
 import lombok.Data;
 

@@ -2,7 +2,6 @@ package br.com.digio.digioteste.lancamentocontabil.infrastructure.repository.map
 
 import br.com.digio.digioteste.lancamentocontabil.domain.Lancamento;
 import br.com.digio.digioteste.lancamentocontabil.infrastructure.repository.mongodb.LancamentoDocument;
-import br.com.digio.digioteste.lancamentocontabil.presentation.LancamentoResource;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

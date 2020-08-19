@@ -2,8 +2,12 @@ package br.com.digio.digioteste.lancamentocontabil.presentation;
 
 import br.com.digio.digioteste.lancamentocontabil.application.LancamentoService;
 import br.com.digio.digioteste.lancamentocontabil.domain.Lancamento;
+import br.com.digio.digioteste.lancamentocontabil.presentation.resources.LancamentoResource;
+import br.com.digio.digioteste.lancamentocontabil.presentation.resources.LancamentoResourceID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 import static br.com.digio.digioteste.lancamentocontabil.presentation.mapper.LancamentoMapper.mapper;
 
@@ -15,7 +19,7 @@ public class LancamentoContabilController {
     private final LancamentoService lancamentoService;
 
     @PostMapping
-    public LancamentoResourceID save(@RequestBody LancamentoResource lancamentoResource) {
+    public LancamentoResourceID save(@Valid @RequestBody LancamentoResource lancamentoResource) {
         Lancamento lancamento = mapper.map(lancamentoResource);
         return mapper.mapID(this.lancamentoService.save(lancamento));
     }
@@ -24,5 +28,6 @@ public class LancamentoContabilController {
     public LancamentoResource save(@PathVariable String id) {
         return mapper.map(this.lancamentoService.getById(id));
     }
+
 
 }

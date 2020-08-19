@@ -2,12 +2,12 @@
 
 ### Tecnologies   
 
-- Java 11 - OK
-- Spring Boot 2 - OK
-- MongoDB - OK
-- Swagger - OK
-- Jacoco
-- Maven - OK
+- Java 11 
+- Spring Boot 2 
+- MongoDB 
+- Swagger 
+- Jacoco 
+- Maven 
 - BeanValidation
 - Docker
 
@@ -22,9 +22,11 @@
 
 ### Coverage Test
 
-Jacoco:   
+Jacoco:   <LINK>
 
-<<< Doc Piramide >>>
+### Quality
+
+Sonar: <LINK>   
 
 ### Run Application
 
@@ -44,9 +46,33 @@ sudo docker-compose up -d
 ```
 
 ### Deployed in EC2:   
-http://ec2/swagger-ui.html   
+http://ec2/swagger-ui.html   <LINK>
 
 ### Observability:   
-Log:    
-Tracing:      
-Metrics:   
+Log: <LINK>   
+Tracing: <LINK>      
+Metrics: <LINK>   
+
+##### About me
+LinkedIn:   
+Twitter:   
+Medium:   
+Dev.to:   
+Wordpress:   
+Github:   
+Instagram:   
+
+### Tasks - Delete me
+
+- BeanValidation OK   
+
+- Internacionalizon BeanValidation ?
+- Prometheus
+- Docker -> Dockerhub -> docker-compose.yml ?   
+- Doc :: Piramide de Teste
+- Doc :: Jacoco Link (S3)
+- Deploy EC2 
+- Link :: ELK
+- Link :: Jaeger
+- Link :: Grafana
+- Link :: Sonar
