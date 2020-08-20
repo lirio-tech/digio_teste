@@ -1,16 +1,19 @@
 package br.com.digio.digioteste.lancamentocontabil.presentation;
 
+import br.com.digio.digioteste.config.trace.Trace;
 import br.com.digio.digioteste.lancamentocontabil.application.LancamentoService;
 import br.com.digio.digioteste.lancamentocontabil.domain.Lancamento;
 import br.com.digio.digioteste.lancamentocontabil.presentation.resources.LancamentoResource;
 import br.com.digio.digioteste.lancamentocontabil.presentation.resources.LancamentoResourceID;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 import static br.com.digio.digioteste.lancamentocontabil.presentation.mapper.LancamentoMapper.mapper;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/lancamentos-contabeis")

@@ -24,9 +24,11 @@
 
 Jacoco:   <LINK>
 
+Ref.: https://mkyong.com/maven/maven-jacoco-code-coverage-example/
+
 ### Quality
 
-Sonar: <LINK>   
+Sonar: http://registry.springhome.com.br/dashboard?id=br.com.digio:digio_teste   
 
 ### Run Application
 
@@ -44,7 +46,7 @@ java -jar -Dspring.profiles.active=default digio_teste-0.0.1-SNAPSHOT.jar
 
 - Docker
 ```sh
-sudo mvn clean package docker:build
+sudo mvn clean verify sonar:sonar docker:build
 sudo docker-compose up -d
 ```
 

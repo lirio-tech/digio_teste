@@ -7,7 +7,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.util.WebAppRootListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +52,7 @@ public class GlobalDefaultExceptionHandler {
         Map<String, String> errors = new HashMap<>();
         errors.put(MESSAGE, ex.getMessage());
         errors.put(TYPE, TYPE_WARNING);
-        log.error(ex.getMessage());
+        log.warn(ex.getMessage());
         return errors;
     }
 }

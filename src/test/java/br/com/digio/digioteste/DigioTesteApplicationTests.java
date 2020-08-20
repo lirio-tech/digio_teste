@@ -8,6 +8,7 @@ class DigioTesteApplicationTests {
 
 	@Test
 	void contextLoads() {
+		DigioTesteApplication.main(new String[0]);
 	}
 
 }

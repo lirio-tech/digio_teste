@@ -19,8 +19,8 @@ public class LancamentoServiceImpl implements LancamentoService {
     @Override
     public Lancamento getById(String id) {
         return Lancamento.builder()
-                     .id(id)
-                     .build()
-                     .getById(repository);
+                .id(id)
+                .build()
+                .getById(repository);
     }
 }
