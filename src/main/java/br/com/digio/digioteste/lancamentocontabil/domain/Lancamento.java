@@ -4,6 +4,7 @@ import br.com.digio.digioteste.lancamentocontabil.infrastructure.repository.Lanc
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -18,6 +19,9 @@ public class Lancamento {
     private LocalDate data;
 
     public Lancamento save(LancamentoRepository repository) {
+        if(Objects.isNull(data)) {
+            data = LocalDate.now();
+        }
         return repository.save(this);
     }
 

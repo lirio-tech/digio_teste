@@ -1,8 +1,10 @@
 package br.com.digio.digioteste.lancamentocontabil.presentation.resources;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class LancamentoResourceID {
 
     private String id;

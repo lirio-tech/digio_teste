@@ -8,18 +8,15 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static br.com.digio.digioteste.lancamentocontabil.template.LancamentoFixtureTemplate.LABEL_LANCAMENTO_COM_ID;
+import static br.com.digio.digioteste.lancamentocontabil.template.LancamentoFixtureTemplate.LABEL_LANCAMENTO_SEM_ID_E_DATA_NULL;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 public class LancamentoTests {
-
-    @InjectMocks
-    private Lancamento lancamento;
 
     @Mock
     private LancamentoRepository repository;
@@ -31,11 +28,33 @@ public class LancamentoTests {
 
     @Test
     public void testSave() {
+        Lancamento lancamento = Fixture.from(Lancamento.class).gimme(LABEL_LANCAMENTO_SEM_ID_E_DATA_NULL);
         Lancamento lacamentoComId = Fixture.from(Lancamento.class).gimme(LABEL_LANCAMENTO_COM_ID);
         when(repository.save(lancamento)).thenReturn(lacamentoComId);
-        Lancamento saved = this.lancamento.save(repository);
+        Lancamento saved = lancamento.save(repository);
         Assert.assertNotNull(saved);
         Assert.assertNotNull(saved.getId());
+    }
+
+    @Test
+    public void testSaveWithDateNull() {
+        Lancamento lancamento = Lancamento.builder().data(null).id("13").descricao("351sgbmgh").valor(6D).build();
+        when(repository.save(lancamento)).thenReturn(lancamento);
+        Lancamento saved = lancamento.save(repository);
+        Assert.assertNotNull(saved);
+        Assert.assertNotNull(saved.getData());
+    }
+
+    @Test
+    public void testGetById() {
+        Lancamento lacamentoComId = Fixture.from(Lancamento.class).gimme(LABEL_LANCAMENTO_COM_ID);
+        when(repository.getById(lacamentoComId.getId())).thenReturn(lacamentoComId);
+        Lancamento getById = lacamentoComId.getById(repository);
+        Assert.assertNotNull(getById);
+        Assert.assertNotNull(getById.getId());
+        Assert.assertNotNull(getById.getDescricao());
+        Assert.assertTrue(getById.getValor() > 0);
+        Assert.assertEquals(getById.getData(), lacamentoComId.getData());
     }
 
 }

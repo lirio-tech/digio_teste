@@ -15,9 +15,10 @@ public class LancamentoResource {
 
     @NotBlank
     private String descricao;
+
     @DecimalMin(value = "1.00", inclusive = false)
     @Digits(integer=3, fraction=2)
     private BigDecimal valor;
 
-    private LocalDate data = LocalDate.now();
+    private LocalDate data;
 }

@@ -25,7 +25,7 @@ public class LancamentoContabilController {
     }
 
     @GetMapping("/{id}")
-    public LancamentoResource save(@PathVariable String id) {
+    public LancamentoResource getById(@PathVariable String id) {
         return mapper.map(this.lancamentoService.getById(id));
     }
 

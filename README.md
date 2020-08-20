@@ -37,11 +37,14 @@ mvn clean package spring-boot:run
 
 - Jar
 ```sh
-java -jar digio_teste.jar
+mvn clean package
+cd target/
+java -jar -Dspring.profiles.active=default digio_teste-0.0.1-SNAPSHOT.jar
 ```
 
 - Docker
 ```sh
+sudo mvn clean package docker:build
 sudo docker-compose up -d
 ```
 
