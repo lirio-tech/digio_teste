@@ -16,14 +16,14 @@ import java.util.Objects;
 public class Lancamento {
 
     private String id;
-    private String descricao;
+    private Long contaContabil;
     private Double valor;
     private LocalDate data;
 
     public Lancamento save(LancamentoRepository repository) {
         if(Objects.isNull(data)) {
             data = LocalDate.now();
-            log.info("Data Nulla, {}", data);
+            log.info("Data Null, {}", data);
         }
         return repository.save(this);
     }

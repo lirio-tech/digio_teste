@@ -13,18 +13,18 @@
 
 ### Code Arquitecture
 
-<<< Doc Piramide >>>
-
 - Presentation
 - Application
 - Domain
 - Infrastructure
 
+### Tests
+
+![](https://docs.microsoft.com/pt-br/dotnet/architecture/modern-web-apps-azure/media/image9-1.png ) 
+
 ### Coverage Test
 
-Jacoco:   <LINK>
-
-Ref.: https://mkyong.com/maven/maven-jacoco-code-coverage-example/
+Jacoco: http://digio-teste.s3-website-us-east-1.amazonaws.com
 
 ### Quality
 
@@ -47,6 +47,7 @@ java -jar -Dspring.profiles.active=default digio_teste-0.0.1-SNAPSHOT.jar
 - Docker
 ```sh
 sudo mvn clean verify sonar:sonar docker:build
+cd devops/
 sudo docker-compose up -d
 ```
 
@@ -54,30 +55,15 @@ sudo docker-compose up -d
 http://ec2/swagger-ui.html   <LINK>
 
 ### Observability:   
-Log: <LINK>   
-Tracing: <LINK>      
-Metrics: <LINK>   
+Log: ...   
+Tracing:       
+Metrics: ...   
 
 ##### About me
-LinkedIn:   
-Twitter:   
-Medium:   
-Dev.to:   
-Wordpress:   
-Github:   
-Instagram:   
-
-### Tasks - Delete me
-
-- BeanValidation OK   
-
-- Internacionalizon BeanValidation ?
-- Prometheus
-- Docker -> Dockerhub -> docker-compose.yml ?   
-- Doc :: Piramide de Teste
-- Doc :: Jacoco Link (S3)
-- Deploy EC2 
-- Link :: ELK
-- Link :: Jaeger
-- Link :: Grafana
-- Link :: Sonar
+LinkedIn: https://www.linkedin.com/in/diegolirio/   
+Twitter: https://twitter.com/diegolirio   
+Medium: https://medium.com/@diegolirio     
+Dev.to: https://dev.to/diegolirio      
+Wordpress: https://diegolirio.wordpress.com       
+Github: https://github.com/diegolirio       
+Instagram: https://www.instagram.com/diegolirio        

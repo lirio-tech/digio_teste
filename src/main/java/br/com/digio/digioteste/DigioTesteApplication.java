@@ -10,4 +10,5 @@ public class DigioTesteApplication {
 		SpringApplication.run(DigioTesteApplication.class, args);
 	}
 
+
 }

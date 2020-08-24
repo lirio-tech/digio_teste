@@ -14,7 +14,7 @@ public class LancamentoDocument {
 
     @Id
     private String id;
-    private String descricao;
+    private Long contaContabil;
     private Double valor;
     private LocalDate data;
 }

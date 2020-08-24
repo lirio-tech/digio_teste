@@ -2,6 +2,31 @@ spring:
   application:
     name: digio-teste
 
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,mongodb
+---
+spring:
+  profiles: default, local
+  data:
+    mongodb:
+      uri: ${MONGO_DB_URL:mongodb://digio:digio123@ds119738.mlab.com:19738/digio-db?retryWrites=false}
+opentracing:
+  jaeger:
+    log-spans: false
+    enable-b3-propagation: false
+---
+spring:
+  profiles: develop
   data:
     mongodb:
       uri: ${MONGO_DB_URL:mongodb://digio:digio123@ds119738.mlab.com:19738/digio-db?retryWrites=false}
@@ -9,22 +34,6 @@ spring:
 opentracing:
   jaeger:
     log-spans: true
-    enable-b3-propagation: true
-
----
-
-spring:
-  profiles: develop
-  application:
-    name: digio_teste
-
-  data:
-    mongodb:
-      uri: ${MONGO_DB_URL:mongodb://digio:digio123@ds119738.mlab.com:19738/digio-db?retryWrites=false}
-
-opentracing:
-  jaeger:
-    #log-spans: false
     #enable-b3-propagation: true
     udp-sender:
       host: jaeger

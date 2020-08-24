@@ -14,4 +14,5 @@ public interface LancamentoMapper {
     Lancamento map(LancamentoResource lancamentoResource);
     LancamentoResourceID mapID(Lancamento lancamento);
     LancamentoResource map(Lancamento lancamento);
+
 }

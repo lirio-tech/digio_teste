@@ -34,6 +34,7 @@ public class JaegerTrace {
 
     @Before("pointcutTrace()")
     public void beforeTrace(final JoinPoint joinPoint) {
+        // TODO tests args input and out
         Span span = tracer.buildSpan(joinPoint.getSignature().getName()).start();
         span.setTag("input", joinPoint.toString());
         log.info(joinPoint.getArgs().toString());

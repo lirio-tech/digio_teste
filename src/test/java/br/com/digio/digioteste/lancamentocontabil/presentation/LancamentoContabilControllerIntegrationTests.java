@@ -1,7 +1,6 @@
 package br.com.digio.digioteste.lancamentocontabil.presentation;
 
 import br.com.digio.digioteste.DigioTesteApplication;
-import br.com.digio.digioteste.lancamentocontabil.domain.Lancamento;
 import br.com.digio.digioteste.lancamentocontabil.presentation.resources.LancamentoResource;
 import br.com.digio.digioteste.lancamentocontabil.presentation.resources.LancamentoResourceID;
 import br.com.digio.digioteste.lancamentocontabil.template.LancamentoFixtureTemplate;
@@ -22,7 +21,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
 
-import static br.com.digio.digioteste.lancamentocontabil.template.LancamentoFixtureTemplate.LABEL_LANCAMENTO_SEM_ID_E_DATA_NULL;
 import static br.com.digio.digioteste.lancamentocontabil.template.LancamentoFixtureTemplate.LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -52,7 +50,7 @@ public class LancamentoContabilControllerIntegrationTests {
         mvc.perform(post("/lancamentos-contabeis")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id", CoreMatchers.notNullValue()));

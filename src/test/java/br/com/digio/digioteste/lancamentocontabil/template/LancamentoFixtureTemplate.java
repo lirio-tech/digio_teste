@@ -16,7 +16,7 @@ public class LancamentoFixtureTemplate implements TemplateLoader {
     public final static String LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL = "label-resources-lamento-sem-id-e-com-data-null";
 
     private static final String ID = "id";
-    private static final String DESCRICAO = "descricao";
+    private static final String CONTA_CONTABIL = "contaContabil";
     private static final String VALOR = "valor";
     private static final String DATA = "data";
 
@@ -26,21 +26,22 @@ public class LancamentoFixtureTemplate implements TemplateLoader {
         Fixture.of(Lancamento.class).addTemplate(LABEL_LANCAMENTO_COM_ID, new Rule() {
             {
                 add(LancamentoFixtureTemplate.ID, "65saf21df21b6541fhm");
-                add(LancamentoFixtureTemplate.DESCRICAO, "Lancamento Test");
+                add(LancamentoFixtureTemplate.CONTA_CONTABIL, 6526526L);
                 add(LancamentoFixtureTemplate.VALOR, 29.99D);
                 add(LancamentoFixtureTemplate.DATA, LocalDate.now());
             }
         });
         Fixture.of(Lancamento.class).addTemplate(LABEL_LANCAMENTO_SEM_ID_E_DATA_NULL, new Rule() {
             {
-                add(LancamentoFixtureTemplate.DESCRICAO, "Lancamento Test com Data Null");
+                add(LancamentoFixtureTemplate.CONTA_CONTABIL, 5464695L);
                 add(LancamentoFixtureTemplate.VALOR, 1.99D);
             }
         });
         Fixture.of(LancamentoResource.class).addTemplate(LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL, new Rule() {
             {
-                add(LancamentoFixtureTemplate.DESCRICAO, "Lancamento RESOURCES");
+                add(LancamentoFixtureTemplate.CONTA_CONTABIL, 151641654L);
                 add(LancamentoFixtureTemplate.VALOR, "1.99");
+                add(LancamentoFixtureTemplate.DATA, LocalDate.now());
             }
         });
     }

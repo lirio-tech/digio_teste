@@ -38,7 +38,7 @@ public class LancamentoTests {
 
     @Test
     public void testSaveWithDateNull() {
-        Lancamento lancamento = Lancamento.builder().data(null).id("13").descricao("351sgbmgh").valor(6D).build();
+        Lancamento lancamento = Lancamento.builder().data(null).id("165s2fdgn3").contaContabil(121566L).valor(6.99D).build();
         when(repository.save(lancamento)).thenReturn(lancamento);
         Lancamento saved = lancamento.save(repository);
         Assert.assertNotNull(saved);
@@ -52,7 +52,7 @@ public class LancamentoTests {
         Lancamento getById = lacamentoComId.getById(repository);
         Assert.assertNotNull(getById);
         Assert.assertNotNull(getById.getId());
-        Assert.assertNotNull(getById.getDescricao());
+        Assert.assertNotNull(getById.getContaContabil());
         Assert.assertTrue(getById.getValor() > 0);
         Assert.assertEquals(getById.getData(), lacamentoComId.getData());
     }
