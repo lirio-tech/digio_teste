@@ -1,6 +1,5 @@
 package br.com.digio.digioteste.lancamentocontabil.domain;
 
-import br.com.digio.digioteste.lancamentocontabil.infrastructure.repository.LancamentoRepository;
 import br.com.digio.digioteste.lancamentocontabil.template.LancamentoFixtureTemplate;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;

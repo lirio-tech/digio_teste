@@ -2,7 +2,7 @@ package br.com.digio.digioteste.lancamentocontabil.application;
 
 import br.com.digio.digioteste.config.trace.Trace;
 import br.com.digio.digioteste.lancamentocontabil.domain.Lancamento;
-import br.com.digio.digioteste.lancamentocontabil.infrastructure.repository.LancamentoRepository;
+import br.com.digio.digioteste.lancamentocontabil.domain.LancamentoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,5 @@
 package br.com.digio.digioteste.lancamentocontabil.domain;
 
-import br.com.digio.digioteste.lancamentocontabil.infrastructure.repository.LancamentoRepository;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
