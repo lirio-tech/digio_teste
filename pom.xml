@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>br.com.digio</groupId>
-    <artifactId>digio_teste</artifactId>
+    <artifactId>digio-teste</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>digio_teste</name>
+    <name>digio-teste</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

@@ -7,7 +7,7 @@ items:
     metadata:
       labels:
         expose: "true"
-        app: digio_teste
+        app: digio-teste
         provider: fabric8
         version: 0.0.1-SNAPSHOT
         group: br.com.digio
