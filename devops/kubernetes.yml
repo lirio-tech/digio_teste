@@ -11,7 +11,7 @@ items:
         provider: fabric8
         version: 0.0.1-SNAPSHOT
         group: br.com.digio
-      name: digio_teste
+      name: digio-teste
     spec:
       ports:
         - nodePort: 30080
@@ -19,7 +19,7 @@ items:
           protocol: TCP
           targetPort: 8080
       selector:
-        app: digio_teste
+        app: digio-teste
         provider: fabric8
         group: br.com.digio
       type: LoadBalancer
@@ -27,22 +27,22 @@ items:
     kind: Deployment
     metadata:
       labels:
-        app: digio_teste
+        app: digio-teste
         provider: fabric8
         version: 0.0.1-SNAPSHOT
         group: br.com.digio
-      name: digio_teste
+      name: digio-teste
     spec:
       replicas: 1
       selector:
         matchLabels:
-          app: digio_teste
+          app: digio-teste
           provider: fabric8
           group: br.com.digio
       template:
         metadata:
           labels:
-            app: digio_teste
+            app: digio-teste
             provider: fabric8
             version: 0.0.1-SNAPSHOT
             group: br.com.digio
@@ -55,7 +55,7 @@ items:
                       fieldPath: metadata.namespace
                 - name: SPRING_PROFILES_ACTIVE
                   value: default
-              image: diegolirio/digio_teste:0.0.1-SNAPSHOT
+              image: diegolirio/digio-teste:0.0.1-SNAPSHOT
               imagePullPolicy: Always
               name: spring-boot-starter-parent
               securityContext:
