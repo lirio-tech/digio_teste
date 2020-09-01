@@ -9,7 +9,7 @@ items:
         expose: "true"
         app: digio-teste
         provider: fabric8
-        version: 0.0.2-SNAPSHOT
+        version: 0.0.1-SNAPSHOT
         group: br.com.digio
       name: digio-teste
     spec:
@@ -29,7 +29,7 @@ items:
       labels:
         app: digio-teste
         provider: fabric8
-        version: 0.0.2-SNAPSHOT
+        version: 0.0.1-SNAPSHOT
         group: br.com.digio
       name: digio-teste
     spec:
@@ -44,7 +44,7 @@ items:
           labels:
             app: digio-teste
             provider: fabric8
-            version: 0.0.2-SNAPSHOT
+            version: 0.0.1-SNAPSHOT
             group: br.com.digio
         spec:
           containers:
@@ -55,7 +55,7 @@ items:
                       fieldPath: metadata.namespace
                 - name: SPRING_PROFILES_ACTIVE
                   value: default
-              image: diegolirio/digio-teste:0.0.2-SNAPSHOT
+              image: diegolirio/digio-teste:0.0.1-SNAPSHOT
               imagePullPolicy: Always
               name: spring-boot-starter-parent
               securityContext:
