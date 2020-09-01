@@ -33,7 +33,7 @@ spring:
 
 opentracing:
   jaeger:
-    log-spans: true
+    log-spans: false
     #enable-b3-propagation: true
     udp-sender:
       host: jaeger

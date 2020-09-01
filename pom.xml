@@ -8,9 +8,10 @@
         <version>2.3.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>br.com.digio</groupId>
     <artifactId>digio-teste</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.4-SNAPSHOT</version>
     <name>digio-teste</name>
     <description>Demo project for Spring Boot</description>
 
@@ -18,7 +19,7 @@
         <java.version>11</java.version>
         <sonar.host.url>http://registry.springhome.com.br</sonar.host.url>
         <registry.name>diegolirio</registry.name>
-        <enviroment>default</enviroment>
+        <enviroment>develop</enviroment>
     </properties>
 
     <dependencies>
@@ -26,7 +27,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>io.opentracing.contrib</groupId>
+            <artifactId>opentracing-mongo-driver</artifactId>
+            <version>0.1.5</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -161,7 +166,7 @@
             <plugin>
                 <groupId>io.fabric8</groupId>
                 <artifactId>fabric8-maven-plugin</artifactId>
-                <version>4.4.1</version>
+                <version>3.5.33</version>
                 <configuration>
                     <skipBuild>false</skipBuild>
                     <profile>minimal</profile>
@@ -178,7 +183,7 @@
                                     <basedir>/deployments</basedir>
                                     <descriptorRef>artifact-with-dependencies</descriptorRef>
                                 </assembly>
-                                <entryPoint>java -jar /deployments/${project.build.finalName}.jar</entryPoint>
+                                <entryPoint>java -jar -Dspring.profiles.active=${enviroment} /deployments/${project.build.finalName}.jar</entryPoint>
                             </build>
                         </image>
                     </images>
@@ -225,5 +230,25 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>default</id>
+<!--            <activation>-->
+<!--                <activeByDefault>true</activeByDefault>-->
+<!--            </activation>-->
+            <properties>
+                <environment>default</environment>
+                <registry.name>diegolirio</registry.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>develop</id>
+            <properties>
+                <environment>develop</environment>
+                <registry.name>diegolirio</registry.name>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

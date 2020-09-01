@@ -46,7 +46,7 @@ java -jar -Dspring.profiles.active=default digio_teste-0.0.1-SNAPSHOT.jar
 
 - Docker
 ```sh
-sudo mvn clean verify sonar:sonar docker:build
+sudo mvn clean install -Pdevelop fabric8:build 
 cd devops/
 sudo docker-compose up -d
 ```
