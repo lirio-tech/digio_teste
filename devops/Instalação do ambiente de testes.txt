@@ -6,6 +6,8 @@
 5. ConfigMap para os Nodes
 
 
+0.
+
 Instalação KUBECTL
 ==================
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -92,13 +94,19 @@ kubectl expose deployment nginx-deployment --type=NodePort
 kubectl get services
 
 
+1. 
+
+VPC
+
 
 ---- EKS ------
 
+2.
 
 aws eks create-cluster --name eks-prod --role-arn arn:aws:iam::241621294044:role/Role-EKS  --resources-vpc-config subnetIds=subnet-095aaf739c45e7b9c,subnet-070de7234d5920636,subnet-083251b1587507cca,securityGroupIds=sg-055841b34bd1dac4e
 aws eks describe-cluster --name eks-prod | grep status
 
+3.
 
 - auth
 
