@@ -22,8 +22,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import static br.com.digio.digioteste.lancamentocontabil.template.LancamentoFixtureTemplate.LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL;
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -168,6 +170,19 @@ public class LancamentoContabilControllerIntegrationTests {
                 .andExpect(jsonPath("$.maximo", greaterThan(1D)))
                 .andExpect(jsonPath("$.media", greaterThan(1D)))
                 .andExpect(jsonPath("$.quantidade", greaterThan(0)));
+    }
+
+    @Test
+    public void testLancamentoAggregate_WithContaContabilThatNotExists_thenStatus200() throws Exception {
+        mvc.perform(get(LANCAMENTOS_CONTABEIS_PREFIX_URL+"/stats")
+                .param("contaContabil", String.valueOf(UUID.randomUUID().getLeastSignificantBits()))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.soma", is(0D)))
+                .andExpect(jsonPath("$.minimo", is(0D)))
+                .andExpect(jsonPath("$.maximo", is(0D)))
+                .andExpect(jsonPath("$.media", is(0D)))
+                .andExpect(jsonPath("$.quantidade", is(0)));
     }
 
 }
