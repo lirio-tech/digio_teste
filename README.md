@@ -24,11 +24,11 @@
 
 ### Coverage Test
 
-`Jacoco`:  http://digio-teste.s3-website-us-east-1.amazonaws.com 
+`Jacoco:` http://digio-teste.s3-website-us-east-1.amazonaws.com   
 
 ### Quality
 
-`Sonar`: http://registry.springhome.com.br/dashboard?id=br.com.digio:digio_teste   
+`Sonar:` http://registry.springhome.com.br/dashboard?id=br.com.digio:digio_teste   
 
 ### Run Application
 
@@ -41,7 +41,7 @@ mvn clean package spring-boot:run
 ```sh
 mvn clean package
 cd target/
-java -jar -Dspring.profiles.active=default digio_teste-0.0.1-SNAPSHOT.jar
+java -jar -Dspring.profiles.active=default digio_teste-0.0.5-SNAPSHOT.jar
 ```
 
 - Docker
@@ -52,20 +52,15 @@ sudo docker-compose up -d
 ```
 
 ### Deployed in EC2:   
-`API`: http://ec2-35-170-67-146.compute-1.amazonaws.com:8080/swagger-ui.html#/lancamento-contabil-controller   
+`API:` http://ec2-35-170-67-146.compute-1.amazonaws.com:8080/swagger-ui.html#/lancamento-contabil-controller   
 
 
 ### Observability:   
-`Log`: No Time      
-`Tracing`: http://ec2-35-170-67-146.compute-1.amazonaws.com:16686/          
-`Metrics`: http://ec2-35-170-67-146.compute-1.amazonaws.com:3000/d/E1ZtG-NMk/digio-spring-boot?orgId=1 or http://ec2-35-170-67-146.compute-1.amazonaws.com:9090/graph?g0.range_input=15m&g0.expr=system_cpu_usage&g0.tab=0   
+`Log:` No Time      
+`Tracing:` http://ec2-35-170-67-146.compute-1.amazonaws.com:16686/          
+`Metrics:` http://ec2-35-170-67-146.compute-1.amazonaws.com:3000/d/E1ZtG-NMk/digio-spring-boot?orgId=1 or http://ec2-35-170-67-146.compute-1.amazonaws.com:9090/graph?g0.range_input=15m&g0.expr=system_cpu_usage&g0.tab=0   
    
-
 ### Deploy in Kubernetes
-
-```shell script
-sudo mvn clean package -P default fabric8:build fabric8:push 
-```
 
 ```yaml
 ---
@@ -79,7 +74,7 @@ items:
       expose: "true"
       app: digio_teste
       provider: fabric8
-      version: 0.0.1-SNAPSHOT
+      version: 0.0.5-SNAPSHOT
       group: br.com.digio
     name: digio_teste
   spec:
@@ -99,7 +94,7 @@ items:
     labels:
       app: digio_teste
       provider: fabric8
-      version: 0.0.1-SNAPSHOT
+      version: 0.0.5-SNAPSHOT
       group: br.com.digio
     name: digio_teste
   spec:
@@ -114,7 +109,7 @@ items:
         labels:
           app: digio_teste
           provider: fabric8
-          version: 0.0.1-SNAPSHOT
+          version: 0.0.5-SNAPSHOT
           group: br.com.digio
       spec:
         containers:
@@ -125,7 +120,7 @@ items:
                 fieldPath: metadata.namespace
           - name: SPRING_PROFILES_ACTIVE
             value: default
-          image: diegolirio/digio_teste:0.0.1-SNAPSHOT
+          image: diegolirio/digio_teste:0.0.5-SNAPSHOT
           imagePullPolicy: Always
           name: spring-boot-starter-parent
           securityContext:
@@ -136,25 +131,12 @@ items:
 kubectl apply -f kubernetes.yml
 ```
 
-```java
-    public LancamentoDocument getByContaContabil(Long contaContabil) {
-        return mongoTemplate.findOne( 
-                Query.query(Criteria.where("contaContabil").is(contaContabil)), LancamentoDocument.class); 
-    }
-```
-
-```java
-    Double reduce = lancamentos.stream()
-            .map(Lancamento::getValor)
-            .reduce(0D, Double::sum);                   
-```
-
 
 ##### About me
-`LinkedIn`: https://www.linkedin.com/in/diegolirio/   
-`Twitter`: https://twitter.com/diegolirio   
-`Medium`: https://medium.com/@diegolirio     
-`Dev.to`: https://dev.to/diegolirio      
-`Wordpress`: https://diegolirio.wordpress.com   
-`Github`: https://github.com/diegolirio       
-`Instagram`: https://www.instagram.com/diegolirio        
+`LinkedIn:` https://www.linkedin.com/in/diegolirio/   
+`Twitter:` https://twitter.com/diegolirio   
+`Medium:` https://medium.com/@diegolirio     
+`Dev.to:` https://dev.to/diegolirio      
+`Wordpress:` https://diegolirio.wordpress.com   
+`Github:` https://github.com/diegolirio       
+`Instagram:` https://www.instagram.com/diegolirio        
