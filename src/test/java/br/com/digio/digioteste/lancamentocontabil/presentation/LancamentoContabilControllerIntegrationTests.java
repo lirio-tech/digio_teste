@@ -27,6 +27,7 @@ import static br.com.digio.digioteste.lancamentocontabil.template.LancamentoFixt
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static br.com.digio.digioteste.lancamentocontabil.presentation.LancamentoContabilController.LANCAMENTOS_CONTABEIS_PREFIX_URL;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = DigioTesteApplication.class)
@@ -49,7 +50,7 @@ public class LancamentoContabilControllerIntegrationTests {
         String json = new ObjectMapper().writeValueAsString(
                 Fixture.from(LancamentoResource.class).gimme(LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL));
 
-        mvc.perform(post("/lancamentos-contabeis")
+        mvc.perform(post(LANCAMENTOS_CONTABEIS_PREFIX_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
                 .andExpect(status().isCreated())
@@ -64,7 +65,7 @@ public class LancamentoContabilControllerIntegrationTests {
         String json = new ObjectMapper().writeValueAsString(
                 Fixture.from(LancamentoResource.class).gimme(LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL));
 
-        String responseBodyJson = mvc.perform(post("/lancamentos-contabeis")
+        String responseBodyJson = mvc.perform(post(LANCAMENTOS_CONTABEIS_PREFIX_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
                 .andReturn()
@@ -72,14 +73,14 @@ public class LancamentoContabilControllerIntegrationTests {
 
         LancamentoResourceID lancamentoResourceID = new ObjectMapper().readValue(responseBodyJson, LancamentoResourceID.class);
 
-        mvc.perform(get("/lancamentos-contabeis/"+lancamentoResourceID.getId())
+        mvc.perform(get(LANCAMENTOS_CONTABEIS_PREFIX_URL+"/"+lancamentoResourceID.getId())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void testLancamento_getById_thenStatus404() throws Exception {
-        mvc.perform(get("/lancamentos-contabeis/a404")
+        mvc.perform(get(LANCAMENTOS_CONTABEIS_PREFIX_URL+"/a404")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
                 .andExpect(content()
@@ -95,7 +96,7 @@ public class LancamentoContabilControllerIntegrationTests {
         lancamentoResource.setValor(BigDecimal.valueOf(0.00D));
         String json = new ObjectMapper().writeValueAsString(lancamentoResource);
 
-        mvc.perform(post("/lancamentos-contabeis")
+        mvc.perform(post(LANCAMENTOS_CONTABEIS_PREFIX_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
                 .andExpect(status().isBadRequest())
@@ -110,7 +111,7 @@ public class LancamentoContabilControllerIntegrationTests {
         LancamentoResource lancamentoResource = Fixture.from(LancamentoResource.class).gimme(LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL);
         String json = new ObjectMapper().writeValueAsString(lancamentoResource);
 
-        String responseBodyJson = mvc.perform(post("/lancamentos-contabeis")
+        String responseBodyJson = mvc.perform(post(LANCAMENTOS_CONTABEIS_PREFIX_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
                 .andReturn()
@@ -118,7 +119,7 @@ public class LancamentoContabilControllerIntegrationTests {
 
         LancamentoResourceID lancamentoResourceID = new ObjectMapper().readValue(responseBodyJson, LancamentoResourceID.class);
 
-        mvc.perform(get("/lancamentos-contabeis")
+        mvc.perform(get(LANCAMENTOS_CONTABEIS_PREFIX_URL)
                     .param("contaContabil", String.valueOf(lancamentoResource.getContaContabil()))
                     .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk());
@@ -130,13 +131,13 @@ public class LancamentoContabilControllerIntegrationTests {
         LancamentoResource lancamentoResource = Fixture.from(LancamentoResource.class).gimme(LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL);
         String json = new ObjectMapper().writeValueAsString(lancamentoResource);
 
-        String responseBodyJson = mvc.perform(post("/lancamentos-contabeis")
+        String responseBodyJson = mvc.perform(post(LANCAMENTOS_CONTABEIS_PREFIX_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
                 .andReturn()
                 .getResponse().getContentAsString();
 
-        mvc.perform(get("/lancamentos-contabeis/stats")
+        mvc.perform(get(LANCAMENTOS_CONTABEIS_PREFIX_URL+"/stats")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.soma", greaterThan(1D)))
@@ -152,13 +153,13 @@ public class LancamentoContabilControllerIntegrationTests {
         LancamentoResource lancamentoResource = Fixture.from(LancamentoResource.class).gimme(LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL);
         String json = new ObjectMapper().writeValueAsString(lancamentoResource);
 
-        String responseBodyJson = mvc.perform(post("/lancamentos-contabeis")
+        String responseBodyJson = mvc.perform(post(LANCAMENTOS_CONTABEIS_PREFIX_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
                 .andReturn()
                 .getResponse().getContentAsString();
 
-        mvc.perform(get("/lancamentos-contabeis/stats")
+        mvc.perform(get(LANCAMENTOS_CONTABEIS_PREFIX_URL+"/stats")
                 .param("contaContabil", String.valueOf(lancamentoResource.getContaContabil()))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

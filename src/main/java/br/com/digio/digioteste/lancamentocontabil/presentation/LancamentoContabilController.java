@@ -14,12 +14,15 @@ import javax.validation.Valid;
 import java.util.List;
 
 import static br.com.digio.digioteste.lancamentocontabil.presentation.mapper.LancamentoMapper.mapper;
+import static br.com.digio.digioteste.lancamentocontabil.presentation.LancamentoContabilController.LANCAMENTOS_CONTABEIS_PREFIX_URL;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/lancamentos-contabeis")
+@RequestMapping(LANCAMENTOS_CONTABEIS_PREFIX_URL)
 public class LancamentoContabilController {
+
+    public static final String LANCAMENTOS_CONTABEIS_PREFIX_URL = "/lancamentos-contabeis";
 
     private final LancamentoService lancamentoService;
 
