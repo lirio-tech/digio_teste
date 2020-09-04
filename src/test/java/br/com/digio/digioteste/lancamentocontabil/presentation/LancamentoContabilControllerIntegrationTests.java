@@ -8,9 +8,11 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.CoreMatchers;
+import static org.hamcrest.Matchers.greaterThan;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.internal.matchers.GreaterThan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -41,7 +43,7 @@ public class LancamentoContabilControllerIntegrationTests {
     }
 
     @Test
-    public void testLancamento_save_thenStatus200()
+    public void testLancamento_save_thenStatus201()
             throws Exception {
 
         String json = new ObjectMapper().writeValueAsString(
@@ -100,6 +102,71 @@ public class LancamentoContabilControllerIntegrationTests {
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.valor", CoreMatchers.notNullValue()));
+    }
+
+    @Test
+    public void testLancamento_getByContaContabil_thenStatus200() throws Exception {
+
+        LancamentoResource lancamentoResource = Fixture.from(LancamentoResource.class).gimme(LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL);
+        String json = new ObjectMapper().writeValueAsString(lancamentoResource);
+
+        String responseBodyJson = mvc.perform(post("/lancamentos-contabeis")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andReturn()
+                .getResponse().getContentAsString();
+
+        LancamentoResourceID lancamentoResourceID = new ObjectMapper().readValue(responseBodyJson, LancamentoResourceID.class);
+
+        mvc.perform(get("/lancamentos-contabeis")
+                    .param("contaContabil", String.valueOf(lancamentoResource.getContaContabil()))
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testLancamentoAggregate_WithoutContaContabil_thenStatus200() throws Exception {
+
+        LancamentoResource lancamentoResource = Fixture.from(LancamentoResource.class).gimme(LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL);
+        String json = new ObjectMapper().writeValueAsString(lancamentoResource);
+
+        String responseBodyJson = mvc.perform(post("/lancamentos-contabeis")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andReturn()
+                .getResponse().getContentAsString();
+
+        mvc.perform(get("/lancamentos-contabeis/stats")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.soma", greaterThan(1D)))
+                .andExpect(jsonPath("$.minimo", greaterThan(1D)))
+                .andExpect(jsonPath("$.maximo", greaterThan(1D)))
+                .andExpect(jsonPath("$.media", greaterThan(1D)))
+                .andExpect(jsonPath("$.quantidade", greaterThan(0)));
+    }
+
+    @Test
+    public void testLancamentoAggregate_WithContaContabil_thenStatus200() throws Exception {
+
+        LancamentoResource lancamentoResource = Fixture.from(LancamentoResource.class).gimme(LABEL_RESOURCES_LANCAMENTO_SEM_ID_E_DATA_NULL);
+        String json = new ObjectMapper().writeValueAsString(lancamentoResource);
+
+        String responseBodyJson = mvc.perform(post("/lancamentos-contabeis")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andReturn()
+                .getResponse().getContentAsString();
+
+        mvc.perform(get("/lancamentos-contabeis/stats")
+                .param("contaContabil", String.valueOf(lancamentoResource.getContaContabil()))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.soma", greaterThan(1D)))
+                .andExpect(jsonPath("$.minimo", greaterThan(1D)))
+                .andExpect(jsonPath("$.maximo", greaterThan(1D)))
+                .andExpect(jsonPath("$.media", greaterThan(1D)))
+                .andExpect(jsonPath("$.quantidade", greaterThan(0)));
     }
 
 }

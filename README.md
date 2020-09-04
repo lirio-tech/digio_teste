@@ -136,6 +136,20 @@ items:
 kubectl apply -f kubernetes.yml
 ```
 
+```java
+    public LancamentoDocument getByContaContabil(Long contaContabil) {
+        return mongoTemplate.findOne( 
+                Query.query(Criteria.where("contaContabil").is(contaContabil)), LancamentoDocument.class); 
+    }
+```
+
+```java
+    Double reduce = lancamentos.stream()
+            .map(Lancamento::getValor)
+            .reduce(0D, Double::sum);                   
+```
+
+
 ##### About me
 `LinkedIn`: https://www.linkedin.com/in/diegolirio/   
 `Twitter`: https://twitter.com/diegolirio   

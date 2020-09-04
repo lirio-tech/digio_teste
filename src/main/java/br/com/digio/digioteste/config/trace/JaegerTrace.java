@@ -30,7 +30,7 @@ public class JaegerTrace {
 
     private Map<String, Span> spanMap = new HashMap<>();
 
-    @Pointcut("@annotation(Trace)")
+    @Pointcut("@annotation(LogTrace)")
     public void pointcutTrace() {
     }
 
@@ -42,7 +42,6 @@ public class JaegerTrace {
         if(Objects.nonNull(joinPoint.getArgs())) {
             String inputs = StringUtils.EMPTY;
             for(Object o : joinPoint.getArgs()) {
-                //log.info(o.toString());
                 inputs += o.toString() + ", ";
             }
             log.info(inputs);

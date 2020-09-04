@@ -47,7 +47,7 @@ public class LancamentoTests {
     @Test
     public void testGetById() {
         Lancamento lacamentoComId = Fixture.from(Lancamento.class).gimme(LABEL_LANCAMENTO_COM_ID);
-        when(repository.getById(lacamentoComId.getId())).thenReturn(lacamentoComId);
+        when(repository.findById(lacamentoComId.getId())).thenReturn(lacamentoComId);
         Lancamento getById = lacamentoComId.getById(repository);
         Assert.assertNotNull(getById);
         Assert.assertNotNull(getById.getId());

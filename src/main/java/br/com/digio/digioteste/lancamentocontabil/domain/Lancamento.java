@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -20,7 +21,7 @@ public class Lancamento {
     private LocalDate data;
 
     public Lancamento save(LancamentoRepository repository) {
-        if(Objects.isNull(data)) {
+        if (Objects.isNull(data)) {
             data = LocalDate.now();
             log.info("Data Null, {}", data);
         }
@@ -28,6 +29,11 @@ public class Lancamento {
     }
 
     public Lancamento getById(LancamentoRepository repository) {
-        return repository.getById(this.id);
+        return repository.findById(this.id);
     }
+
+    public List<Lancamento> getByContaContabil(LancamentoRepository repository) {
+        return repository.findByContaContabil(this.getContaContabil());
+    }
+
 }

@@ -24,6 +24,10 @@ opentracing:
   jaeger:
     log-spans: false
     enable-b3-propagation: false
+
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
 ---
 spring:
   profiles: develop
