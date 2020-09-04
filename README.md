@@ -52,14 +52,19 @@ sudo docker-compose up -d
 ```
 
 ### Deployed in EC2:   
-`API:` http://ec2-34-229-181-23.compute-1.amazonaws.com:8080/swagger-ui.html#/lancamento-contabil-controller   
-
-
+`API:`    
+http://ec2-34-229-181-23.compute-1.amazonaws.com:8080/swagger-ui.html#/lancamento-contabil-controller   
+   
 ### Observability:   
-`Log:` No Time      
-`Tracing:` http://ec2-34-229-181-23.compute-1.amazonaws.com:16686/          
-`Metrics:` http://ec2-34-229-181-23.compute-1.amazonaws.com:3000/d/E1ZtG-NMk/digio-spring-boot?orgId=1 `or`   
- http://ec2-34-229-181-23.compute-1.amazonaws.com:9090/graph?g0.range_input=15m&g0.expr=system_cpu_usage&g0.tab=0      
+`Log:` No Time   
+         
+`Tracing:`    
+http://ec2-34-229-181-23.compute-1.amazonaws.com:16686/   
+             
+`Metrics:` http://ec2-34-229-181-23.compute-1.amazonaws.com:3000/d/eX12b2vGz/jvm-micrometer?orgId=1&refresh=30s&from=now-5m&to=now    
+`or`      
+ http://ec2-34-229-181-23.compute-1.amazonaws.com:9090/graph?g0.range_input=15m&g0.expr=system_cpu_usage&g0.tab=0   
+         
    
 ### Deploy in Kubernetes
 
