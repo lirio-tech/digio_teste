@@ -33,7 +33,7 @@ items:
         group: br.com.digio
       name: digio-teste
     spec:
-      replicas: 1
+      replicas: 2
       selector:
         matchLabels:
           app: digio-teste
