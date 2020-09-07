@@ -1,39 +1,30 @@
 package br.com.digio.digioteste.lancamentocontabil.presentation.mapper;
 
-import br.com.digio.digioteste.lancamentocontabil.domain.Lancamento;
-import br.com.digio.digioteste.lancamentocontabil.domain.LancamentoAggregate;
+import br.com.digio.digioteste.lancamentocontabil.application.out.UsecaseGetRegistryByContaContabilOutputPort;
+import br.com.digio.digioteste.lancamentocontabil.application.out.UsecaseGetRegistryByIdOutputPort;
+import br.com.digio.digioteste.lancamentocontabil.application.out.UsecaseGetRegistryStatsOutputPort;
+import br.com.digio.digioteste.lancamentocontabil.application.out.UsecaseSaveRegistryOutputPort;
+import br.com.digio.digioteste.lancamentocontabil.presentation.in.UsecaseSaveRegistryInputAdapter;
 import br.com.digio.digioteste.lancamentocontabil.presentation.resources.LancamentoAgregateResource;
 import br.com.digio.digioteste.lancamentocontabil.presentation.resources.LancamentoResource;
 import br.com.digio.digioteste.lancamentocontabil.presentation.resources.LancamentoResourceID;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface LancamentoMapper {
 
     LancamentoMapper mapper = Mappers.getMapper(LancamentoMapper.class);
 
-    Lancamento map(LancamentoResource lancamentoResource);
+    UsecaseSaveRegistryInputAdapter mapInput(LancamentoResource lancamentoResource);
 
-    LancamentoResourceID mapID(Lancamento lancamento);
+    LancamentoResourceID mapOut(UsecaseSaveRegistryOutputPort output);
 
-    LancamentoResource map(Lancamento lancamento);
+    LancamentoResource mapOut(UsecaseGetRegistryByIdOutputPort outputAdapter);
 
-    @Named("mapToSearch")
-    @Mapping(target = "valor", ignore = true)
-    LancamentoResource mapToSearch(Lancamento lancamento);
+    List<LancamentoResource> map(List<UsecaseGetRegistryByContaContabilOutputPort> outputPorts);
 
-    default List<LancamentoResource> mapToSearch(List<Lancamento> lancamentos) {
-        return lancamentos.stream()
-                   .map(l -> this.mapToSearch(l))
-                   .collect(Collectors.toList());
-    }
-
-    LancamentoAgregateResource map(LancamentoAggregate lancamentoAgregate);
-
+    LancamentoAgregateResource map(UsecaseGetRegistryStatsOutputPort outputPort);
 }
