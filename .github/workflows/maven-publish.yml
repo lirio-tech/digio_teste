@@ -2,7 +2,7 @@ name: Digio Teste Maven Package
 
 on:
   release:
-    types: [push]
+    types: [push, pull_request]
   push:
     branches:    
       - master     
@@ -34,6 +34,8 @@ jobs:
 
       - 
         name: Publish to GitHub Packages Apache Maven
-        run: mvn fabric8:build fabric8:push
+        run: |
+          ls target/
+          mvn fabric8:build fabric8:push
         env:
           GITHUB_TOKEN: ${{ github.token }}
