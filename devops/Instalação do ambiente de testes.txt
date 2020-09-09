@@ -1,0 +1,167 @@
+0. Minikube
+1. Install VPC via CF
+2. Install Cluster via aws-cli
+3. autheticator aws-cli
+4. NodeGroups CF
+5. ConfigMap para os Nodes
+
+Ref.: https://medium.com/faun/create-your-first-application-on-aws-eks-kubernetes-cluster-874ee9681293
+
+0.
+
+Instalação KUBECTL
+==================
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/
+
+Ref.: https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-using-native-package-management
+
+Instalação DOCKER
+=================
+sudo apt-get update
+sudo apt-get install docker.io -y
+
+
+Instalação MINIKUBE
+===================
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.32.0/minikube-linux-amd64 && chmod +x minikube && sudo cp minikube /usr/local/bin/ && rm minikube
+
+(EXECUTAR COMO ROOT) minikube start --vm-driver=none
+
+Ref.: https://kubernetes.io/docs/tasks/tools/install-minikube/#installing-minikube
+
+minikube status
+minikube ip
+minikube stop
+
+Acertando as permissões para o Usuário
+======================================
+sudo mv /root/.kube $HOME/.kube
+sudo chown -R $USER $HOME/.kube
+sudo chgrp -R $USER $HOME/.kube
+sudo mv /root/.minikube $HOME/.minikube
+sudo chown -R $USER $HOME/.minikube
+sudo chgrp -R $USER $HOME/.minikube
+
+
+
+-----
+
+kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml
+
+kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080
+kubectl delete pod hello-minikube
+kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080 --namespace=default
+
+kubectl expose deployment hello-minikube  --type=NodePort
+
+
+
+---
+
+kubectl get namespace
+kubectl get deployments
+
+
+--- ok 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+
+
+kubectl create -f nginx-deployment.yml 
+kubectl get deployment
+kubectl expose deployment nginx-deployment --type=NodePort
+kubectl get services
+
+
+1. 
+
+VPC
+
+
+---- EKS ------
+
+2.
+
+aws eks create-cluster --name eks-prod --role-arn arn:aws:iam::241621294044:role/Role-EKS  --resources-vpc-config subnetIds=subnet-095aaf739c45e7b9c,subnet-070de7234d5920636,subnet-083251b1587507cca,securityGroupIds=sg-055841b34bd1dac4e
+aws eks describe-cluster --name eks-prod | grep status
+
+3.
+
+- auth
+
+curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator
+chmod +x ./aws-iam-authenticator
+mv aws-iam-authenticator ~/.local/bin
+aws eks update-kubeconfig --name eks-prod
+
+
+- ConfigMap Nodes
+
+curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2018-08-30/aws-auth-cm.yaml
+
+edit: arn:aws:iam::241621294044:role/eks-nodes-NodeInstanceRole-1P91XMCZDTO7P
+
+kubectl apply -f aws-auth-cm.yaml
+kubectl describe configmap -n kube-system aws-auth
+kubectl get nodes --watch
+
+
+
+Ref.: https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html
+
+
+
+
+----- Java -----
+
+Spotify vs Fabric8 vs JKube
+
+
+
+
+
+
+
+
+
+ami-0440e4f6b9713faf6
+
+
+
+Problem:
+
+
+kubectl version --short
+
+>>> Output
+  Client Version: v1.10.3
+  The connection to the server localhost:8080 was refused - did you specify the right host or port?
+<<<<
+
+
+
+sudo microk8s kubectl describe svc nginx-service 
+
+https://medium.com/faun/create-your-first-application-on-aws-eks-kubernetes-cluster-874ee9681293

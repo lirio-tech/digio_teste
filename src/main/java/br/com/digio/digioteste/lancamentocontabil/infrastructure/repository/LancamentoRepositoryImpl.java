@@ -2,7 +2,7 @@ package br.com.digio.digioteste.lancamentocontabil.infrastructure.repository;
 
 import br.com.digio.digioteste.lancamentocontabil.domain.Lancamento;
 import br.com.digio.digioteste.lancamentocontabil.domain.LancamentoAggregate;
-import br.com.digio.digioteste.lancamentocontabil.domain.LancamentoRepository;
+import br.com.digio.digioteste.lancamentocontabil.domain.LancamentoGateway;
 import br.com.digio.digioteste.lancamentocontabil.infrastructure.repository.mongodb.LancamentoAgregateRepository;
 import br.com.digio.digioteste.lancamentocontabil.infrastructure.repository.mongodb.LancamentoCrudRepository;
 import br.com.digio.digioteste.lancamentocontabil.infrastructure.repository.mongodb.LancamentoDocument;
@@ -15,7 +15,7 @@ import static br.com.digio.digioteste.lancamentocontabil.infrastructure.reposito
 
 @Repository
 @RequiredArgsConstructor
-public class LancamentoRepositoryImpl implements LancamentoRepository {
+public class LancamentoRepositoryImpl implements LancamentoGateway {
 
     private final LancamentoCrudRepository lancamentoCrudRepository;
     private final LancamentoAgregateRepository agregateRepository;

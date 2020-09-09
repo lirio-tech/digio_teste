@@ -3,7 +3,7 @@ package br.com.digio.digioteste.lancamentocontabil.application;
 import br.com.digio.digioteste.lancamentocontabil.application.in.UsecaseGetRegistryByIdInputPort;
 import br.com.digio.digioteste.lancamentocontabil.application.out.UsecaseGetRegistryByIdOutputPort;
 import br.com.digio.digioteste.lancamentocontabil.domain.Lancamento;
-import br.com.digio.digioteste.lancamentocontabil.domain.LancamentoRepository;
+import br.com.digio.digioteste.lancamentocontabil.domain.LancamentoGateway;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;
@@ -14,7 +14,7 @@ import static br.com.digio.digioteste.lancamentocontabil.application.mapper.Lanc
 @RequiredArgsConstructor
 public class RegistryGetByIdImpl implements RegistryGetById {
 
-    private final LancamentoRepository repository;
+    private final LancamentoGateway repository;
 
     @Override
     public UsecaseGetRegistryByIdOutputPort execute(UsecaseGetRegistryByIdInputPort inputPort) {

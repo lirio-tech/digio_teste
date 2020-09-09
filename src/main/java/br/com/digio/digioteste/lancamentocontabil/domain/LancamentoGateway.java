@@ -2,7 +2,7 @@ package br.com.digio.digioteste.lancamentocontabil.domain;
 
 import java.util.List;
 
-public interface LancamentoRepository {
+public interface LancamentoGateway {
 
     Lancamento save(Lancamento lancamento);
 

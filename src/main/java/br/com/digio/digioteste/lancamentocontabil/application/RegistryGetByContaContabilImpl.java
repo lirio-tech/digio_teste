@@ -3,7 +3,7 @@ package br.com.digio.digioteste.lancamentocontabil.application;
 import br.com.digio.digioteste.lancamentocontabil.application.in.UsecaseGetRegistryByContaContabilInputPort;
 import br.com.digio.digioteste.lancamentocontabil.application.out.UsecaseGetRegistryByContaContabilOutputPort;
 import br.com.digio.digioteste.lancamentocontabil.domain.Lancamento;
-import br.com.digio.digioteste.lancamentocontabil.domain.LancamentoRepository;
+import br.com.digio.digioteste.lancamentocontabil.domain.LancamentoGateway;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;
@@ -17,7 +17,7 @@ import static br.com.digio.digioteste.lancamentocontabil.application.mapper.Lanc
 @RequiredArgsConstructor
 public class RegistryGetByContaContabilImpl implements RegistryGetByContaContabil {
 
-    private final LancamentoRepository repository;
+    private final LancamentoGateway repository;
 
     @Override
     public List<UsecaseGetRegistryByContaContabilOutputPort> execute(UsecaseGetRegistryByContaContabilInputPort inputPort) {

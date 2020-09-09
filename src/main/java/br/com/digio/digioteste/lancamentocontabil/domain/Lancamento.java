@@ -20,19 +20,19 @@ public class Lancamento {
     private Double valor;
     private LocalDate data;
 
-    public Lancamento save(LancamentoRepository repository) {
+    public Lancamento save(LancamentoGateway gateway) {
         if (Objects.isNull(data)) {
             data = LocalDate.now();
             log.info("Data Null, {}", data);
         }
-        return repository.save(this);
+        return gateway.save(this);
     }
 
-    public Lancamento getById(LancamentoRepository repository) {
-        return repository.findById(this.id);
+    public Lancamento getById(LancamentoGateway gateway) {
+        return gateway.findById(this.id);
     }
 
-    public List<Lancamento> getByContaContabil(LancamentoRepository repository) {
+    public List<Lancamento> getByContaContabil(LancamentoGateway repository) {
         return repository.findByContaContabil(this.getContaContabil());
     }
 

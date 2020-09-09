@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 public class LancamentoTests {
 
     @Mock
-    private LancamentoRepository repository;
+    private LancamentoGateway repository;
 
     @BeforeClass
     public static void init() {

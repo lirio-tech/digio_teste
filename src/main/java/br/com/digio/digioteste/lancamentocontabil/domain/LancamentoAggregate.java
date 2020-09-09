@@ -19,7 +19,7 @@ public class LancamentoAggregate {
     private Double media;
     private Integer quantidade;
 
-    public LancamentoAggregate getStats(LancamentoRepository repository) {
+    public LancamentoAggregate getStats(LancamentoGateway repository) {
         LancamentoAggregate lancamentoAggregate = repository.getEstatistica(contaContabil);
         if(Objects.isNull(lancamentoAggregate)) {
             return createInitialState();

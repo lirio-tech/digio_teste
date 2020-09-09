@@ -3,7 +3,7 @@ package br.com.digio.digioteste.lancamentocontabil.application;
 import br.com.digio.digioteste.lancamentocontabil.application.in.UsecaseSaveRegistryInputPort;
 import br.com.digio.digioteste.lancamentocontabil.application.out.UsecaseSaveRegistryOutputPort;
 import br.com.digio.digioteste.lancamentocontabil.domain.Lancamento;
-import br.com.digio.digioteste.lancamentocontabil.domain.LancamentoRepository;
+import br.com.digio.digioteste.lancamentocontabil.domain.LancamentoGateway;
 
 
 import javax.inject.Named;
@@ -13,9 +13,9 @@ import static br.com.digio.digioteste.lancamentocontabil.application.mapper.Lanc
 @Named
 public class RegistrySaveImpl implements RegistrySave {
 
-    private final LancamentoRepository repository;
+    private final LancamentoGateway repository;
 
-    public RegistrySaveImpl(LancamentoRepository repository) {
+    public RegistrySaveImpl(LancamentoGateway repository) {
         this.repository = repository;
     }
 
