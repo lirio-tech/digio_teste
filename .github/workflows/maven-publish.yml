@@ -33,7 +33,7 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - 
-        name: Publish to GitHub Packages Apache Maven
+        name: Publish to DockerHub
         run: |
           ls target/
           mvn fabric8:build fabric8:push

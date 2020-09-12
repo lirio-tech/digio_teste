@@ -4,6 +4,8 @@
 3. autheticator aws-cli
 4. NodeGroups CF
 5. ConfigMap para os Nodes
+6. 
+7. microk8s
 
 Ref.: https://medium.com/faun/create-your-first-application-on-aws-eks-kubernetes-cluster-874ee9681293
 
@@ -165,3 +167,9 @@ kubectl version --short
 sudo microk8s kubectl describe svc nginx-service 
 
 https://medium.com/faun/create-your-first-application-on-aws-eks-kubernetes-cluster-874ee9681293
+
+
+
+# 7. microk8s
+
+Ref.: https://istio.io/latest/docs/setup/platform-setup/microk8s/
