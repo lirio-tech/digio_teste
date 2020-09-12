@@ -39,3 +39,12 @@ jobs:
           mvn fabric8:build fabric8:push
         env:
           GITHUB_TOKEN: ${{ github.token }}
+
+      - 
+        name: Deploy Kubernetes
+        run: |
+          echo > '${{ secrets.KEY_PAIR }}' virg.pem
+          ls
+          ssh -i "virg.pem" ubuntu@ec2-52-90-139-109.compute-1.amazonaws.com
+          microk8s kubectl apply -f kubernetes.yml 
+
