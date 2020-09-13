@@ -50,5 +50,5 @@ jobs:
           port: 22
           script: |
             ls
-            sudo microk8s.kubectl get all
+            sudo microk8s.kubectl apply -f kubernetes.yml
 
