@@ -54,7 +54,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: Update *.yml Kubernetes
+      - 
+        name: Update *.yml Kubernetes
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST_DEPLOY }}
@@ -64,8 +65,7 @@ jobs:
           source: "devops/digio-kubernetes.yml"
           target: "./"
 
-      - 
-      
+      -       
         name: Deploy Kubernetes
         uses: appleboy/ssh-action@master
         with:
