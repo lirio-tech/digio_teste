@@ -28,9 +28,21 @@ jobs:
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
 
+    - name: Release Update-versions
+      run: |
+        mvn test
+        mvn release:update-versions
+        git config --local user.email "diegolirio.dl@gmail.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Changes Version" -a
       - 
         name: Build with Maven
         run: mvn -B package --file pom.xml
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_ACTIONS_TOKEN }}
 
       - 
         name: Publish to DockerHub
