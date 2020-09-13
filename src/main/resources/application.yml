@@ -1,6 +1,7 @@
 spring:
   application:
-    name: digio-teste
+    name: @project.artifactId@
+    version: @project.version@
 
 management:
   endpoint:
