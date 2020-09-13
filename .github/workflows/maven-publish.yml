@@ -32,10 +32,11 @@ jobs:
         name: Build with Maven | Snapshot 
         run: |
 
-          POM_VERSION=cat pom.xml | grep "^    <version>.*</version>$" | awk -F'[><]' '{print $3}'
-          sed -i 's/version: ${POM_VERSION}/version: 0.0.13-SNAPSHOT/g' devops/digio-kubernetes.yml 
+          OLD_VERSION=cat pom.xml | grep "^    <version>.*</version>$" | awk -F'[><]' '{print $3}'
+          mvn release:update-versions          
+          NEW_VERSION=cat pom.xml | grep "^    <version>.*</version>$" | awk -F'[><]' '{print $3}'
+          sed -i 's/${OLD_VERSION}/${NEW_VERSION}/g' devops/digio-kubernetes.yml 
   
-          mvn release:update-versions
           mvn -B package --file pom.xml
 
           git config --local user.email "diegolirio.dl@gmail.com"

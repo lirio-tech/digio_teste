@@ -59,7 +59,7 @@ items:
                 fieldPath: metadata.namespace
           - name: SPRING_PROFILES_ACTIVE
             value: develop
-          image: diegolirio/digio-teste:0.0.11-SNAPSHOT
+          image: diegolirio/digio-teste:0.0.13-SNAPSHOT
           imagePullPolicy: Always
           name: spring-boot-starter-parent
           securityContext:
