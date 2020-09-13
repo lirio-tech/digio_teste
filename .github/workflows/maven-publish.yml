@@ -40,7 +40,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
+      - name: Copy file via ssh key
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST_DEPLOY }}
+          username: ubuntu
+          port: 22
+          key: ${{ secrets.KEY_PAIR }}
+          source: "devops/digio-kubernetes.yml"
+          target: "digio-kubernetes.yml"
+
       - 
+      
         name: Deploy Kubernetes
         uses: appleboy/ssh-action@master
         with:
@@ -50,6 +61,5 @@ jobs:
           port: 22
           script: |
             ls
-            wget -q https://gist.githubusercontent.com/diegolirio/b53d422a49b6c71a8018d5ab152cb4af/raw/1dc71465de6409029aece9efe34dd3944454fb62/digio-kube.yml -O ./digio-kubernetes.yml 
             sudo microk8s.kubectl apply -f digio-kubernetes.yml
 
