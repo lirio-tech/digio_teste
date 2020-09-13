@@ -184,3 +184,7 @@ newgrp docker
 sudo groupadd microk8s
 sudo usermod -aG microk8s $USER
 newgrp microk8s
+
+microk8s.enable istio
+microk8s.kubectl get all --all-namespaces
+# https://istio.io/latest/docs/setup/platform-setup/microk8s/

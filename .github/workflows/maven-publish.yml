@@ -44,11 +44,13 @@ jobs:
         name: Deploy Kubernetes
         uses: appleboy/ssh-action@master
         with:
-          host: ec2-52-90-139-109.compute-1.amazonaws.com
+          host: ${HOST_DEPLOY}
           username: ubuntu
           key: ${{ secrets.KEY_PAIR }}
           port: 22
           script: |
             ls
             sudo microk8s.kubectl apply -f kubernetes.yml
+          env: 
+            HOST_DEPLOY: ec2-23-20-4-6.compute-1.amazonaws.com
 
