@@ -46,7 +46,7 @@ jobs:
         with:
           host: ec2-52-90-139-109.compute-1.amazonaws.com
           username: ubuntu
-          key: virg.pem
+          key: ${{ secrets.KEY_PAIR }}
           port: 22
           script: whoami
 
