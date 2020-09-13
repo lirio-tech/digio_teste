@@ -9,7 +9,7 @@ items:
       expose: "true"
       app: digio-teste
       provider: fabric8
-      version: 0.0.20-SNAPSHOT
+      version: 0.0.21-SNAPSHOT
       group: br.com.digio
     name: digio-teste    
   spec:
@@ -29,7 +29,7 @@ items:
     labels:
       app: digio-teste
       provider: fabric8
-      version: 0.0.20-SNAPSHOT
+      version: 0.0.21-SNAPSHOT
       group: br.com.digio
     name: digio-teste
   spec:
@@ -44,7 +44,7 @@ items:
         labels:
           app: digio-teste
           provider: fabric8
-          version: 0.0.20-SNAPSHOT
+          version: 0.0.21-SNAPSHOT
           group: br.com.digio
         annotations:
           prometheus.io/scrape: 'true'
@@ -59,7 +59,7 @@ items:
                 fieldPath: metadata.namespace
           - name: SPRING_PROFILES_ACTIVE
             value: develop
-          image: diegolirio/digio-teste:0.0.20-SNAPSHOT
+          image: diegolirio/digio-teste:0.0.21-SNAPSHOT
           imagePullPolicy: Always
           name: spring-boot-starter-parent
           securityContext:
