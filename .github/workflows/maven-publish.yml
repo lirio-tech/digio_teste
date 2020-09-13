@@ -46,11 +46,9 @@ jobs:
         with:
           host: ec2-52-90-139-109.compute-1.amazonaws.com
           username: ubuntu
-          key: "virg.pem"
+          key: virg.pem
           port: 22
-          script: |
-            whoami
-            ls -al      
+          script: whoami
 
       -
         name: Deploy Kubernetes
