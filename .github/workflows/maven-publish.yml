@@ -50,6 +50,6 @@ jobs:
           port: 22
           script: |
             ls
-            wget https://gist.githubusercontent.com/diegolirio/3d534fd3a4ff086d921b7a04efb4bc79/raw/9fe2e22788f44157f072506a9924b78d4680203b/digio-kubernetes.yml
+            wget -q https://devops-kubernetes.s3.amazonaws.com/kubernetes-yaml/kubernetes.yml -O ./digio-kubernetes.yml 
             sudo microk8s.kubectl apply -f digio-kubernetes.yml
 
