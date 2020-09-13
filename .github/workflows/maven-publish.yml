@@ -50,5 +50,5 @@ jobs:
           port: 22
           script: |
             ls
-            microk8s.kubectl get all
+            sudo microk8s.kubectl get all
 
