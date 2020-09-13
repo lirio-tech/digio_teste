@@ -48,5 +48,6 @@ jobs:
           username: ubuntu
           key: ${{ secrets.KEY_PAIR }}
           port: 22
-          script: microk8s kubectl apply -f kubernetes.yml 
+          script: |
+            ls
 
