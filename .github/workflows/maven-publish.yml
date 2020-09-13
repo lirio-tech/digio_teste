@@ -48,11 +48,5 @@ jobs:
           username: ubuntu
           key: ${{ secrets.KEY_PAIR }}
           port: 22
-          script: whoami
-
-      -
-        name: Deploy Kubernetes
-        run: |
-          ssh -i "virg.pem" ubuntu@ec2-52-90-139-109.compute-1.amazonaws.com
-          microk8s kubectl apply -f kubernetes.yml 
+          script: microk8s kubectl apply -f kubernetes.yml 
 
