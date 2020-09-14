@@ -2,7 +2,7 @@ name: CI/CD Prodution
 
 on:
   release:
-    types: [push, pull_request]
+    types: [push, pull_request] 
   push:
     branches:    
       - master     
