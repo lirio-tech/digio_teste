@@ -7,11 +7,11 @@ items:
   metadata:
     labels:
       expose: "true"
-      app: digio-teste
+      app: digio-teste-develop
       provider: fabric8
-      version: 0.0.24-SNAPSHOT
+      version: 0.0.29-SNAPSHOT
       group: br.com.digio
-    name: digio-teste    
+    name: digio-teste-develop    
   spec:
     ports:
     - nodePort: 30080
@@ -19,7 +19,7 @@ items:
       protocol: TCP
       targetPort: 8080
     selector:
-      app: digio-teste
+      app: digio-teste-develop
       provider: fabric8
       group: br.com.digio
     type: LoadBalancer
@@ -27,24 +27,24 @@ items:
   kind: Deployment
   metadata:
     labels:
-      app: digio-teste
+      app: digio-teste-develop
       provider: fabric8
-      version: 0.0.24-SNAPSHOT
+      version: 0.0.29-SNAPSHOT
       group: br.com.digio
-    name: digio-teste
+    name: digio-teste-develop
   spec:
     replicas: 1
     selector:
       matchLabels:
-        app: digio-teste
+        app: digio-teste-develop
         provider: fabric8
         group: br.com.digio
     template:
       metadata:
         labels:
-          app: digio-teste
+          app: digio-teste-develop
           provider: fabric8
-          version: 0.0.24-SNAPSHOT
+          version: 0.0.29-SNAPSHOT
           group: br.com.digio
         annotations:
           prometheus.io/scrape: 'true'
@@ -59,7 +59,7 @@ items:
                 fieldPath: metadata.namespace
           - name: SPRING_PROFILES_ACTIVE
             value: develop
-          image: diegolirio/digio-teste:0.0.24-SNAPSHOT
+          image: diegolirio/digio-teste:0.0.29-SNAPSHOT
           imagePullPolicy: Always
           name: spring-boot-starter-parent
           securityContext:

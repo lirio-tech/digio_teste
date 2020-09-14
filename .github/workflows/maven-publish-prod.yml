@@ -1,4 +1,4 @@
-name: Digio Teste Maven Package
+name: CI/CD Prodution
 
 on:
   release:
@@ -32,13 +32,13 @@ jobs:
         name: Build with Maven | Snapshot 
         run: |
 
-          sh ./devops/update-version.sh
+          sh ./devops/prod/update-version.sh
   
           mvn -B package --file pom.xml
 
           git config --local user.email "diegolirio.dl@gmail.com"
           git config --local user.name "GitHub Action"
-          git commit -m "Changes Version" -a
+          git commit -m "Deploy Prod - Canary Release " -a
 
       - 
         name: Push changes
@@ -62,7 +62,7 @@ jobs:
           username: ubuntu
           port: 22
           key: ${{ secrets.KEY_PAIR }}
-          source: "devops/digio-kubernetes.yml"
+          source: "devops/prod/*.yml"
           target: "./"
 
       -       
@@ -75,5 +75,7 @@ jobs:
           port: 22
           script: |
             ls
-            sudo microk8s.kubectl apply -f devops/digio-kubernetes.yml
+            sudo microk8s.kubectl apply -f devops/prod/digio-kubernetes-service.yml
+            sudo microk8s.kubectl apply -f devops/prod/digio-kubernetes-deployment-v1.yml
+            sudo microk8s.kubectl apply -f devops/prod/digio-kubernetes-deployment-v2.yml
 

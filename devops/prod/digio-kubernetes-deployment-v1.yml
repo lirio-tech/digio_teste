@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: digio-teste
+    provider: fabric8
+    version: 0.0.27-SNAPSHOT
+    group: br.com.digio
+  name: digio-teste-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: digio-teste
+      provider: fabric8
+      group: br.com.digio
+  template: 
+    metadata:
+      labels:
+        app: digio-teste
+        provider: fabric8
+        version: 0.0.27-SNAPSHOT
+        group: br.com.digio
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/path: '/actuator/prometheus'
+        prometheus.io/port: '8080'          
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: SPRING_PROFILES_ACTIVE
+          value: develop
+        image: diegolirio/digio-teste:0.0.27-SNAPSHOT
+        imagePullPolicy: Always
+        name: spring-boot-starter-parent
+        securityContext:
+          privileged: false
