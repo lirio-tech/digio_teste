@@ -1,11 +1,11 @@
-name: Digio Teste Maven Package
+name: CI/CD Develop
 
 on:
   release:
     types: [push, pull_request]
   push:
     branches:    
-      - master     
+      - develop     
 
 jobs:
   build:
