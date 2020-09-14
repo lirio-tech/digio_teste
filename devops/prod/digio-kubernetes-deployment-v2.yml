@@ -4,7 +4,7 @@ metadata:
   labels:
     app: digio-teste
     provider: fabric8
-    version: NEW_VERSION
+    version: REPLACE_VERSION
     group: br.com.digio
   name: digio-teste-v2
 spec:
@@ -19,7 +19,7 @@ spec:
       labels:
         app: digio-teste
         provider: fabric8
-        version: NEW_VERSION
+        version: REPLACE_VERSION
         group: br.com.digio
       annotations:
         prometheus.io/scrape: 'true'
@@ -34,7 +34,7 @@ spec:
               fieldPath: metadata.namespace
         - name: SPRING_PROFILES_ACTIVE
           value: develop
-        image: diegolirio/digio-teste:NEW_VERSION
+        image: diegolirio/digio-teste:REPLACE_VERSION
         imagePullPolicy: Always
         name: spring-boot-starter-parent
         securityContext:

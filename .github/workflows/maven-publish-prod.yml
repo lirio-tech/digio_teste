@@ -32,7 +32,7 @@ jobs:
         name: Build with Maven | Snapshot 
         run: |
 
-          sh ./devops/update-version.sh
+          sh ./devops/prod/update-version.sh
   
           mvn -B package --file pom.xml
 

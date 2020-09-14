@@ -9,7 +9,7 @@ metadata:
   name: digio-teste    
 spec:
   ports:
-  - nodePort: 30080
+  - nodePort: 30070
     port: 8080
     protocol: TCP
     targetPort: 8080
