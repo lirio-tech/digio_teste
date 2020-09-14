@@ -32,7 +32,7 @@ jobs:
         name: Build with Maven | Snapshot 
         run: |
 
-          sh ./devops/update-version.sh
+          sh ./devops/develop/update-version.sh
   
           mvn -B package --file pom.xml
 
@@ -42,7 +42,7 @@ jobs:
 
       - 
         name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@develop
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -62,8 +62,8 @@ jobs:
           username: ubuntu
           port: 22
           key: ${{ secrets.KEY_PAIR }}
-          source: "devops/digio-kubernetes.yml"
-          target: "./"
+          source: "devops/develop/digio-kubernetes.yml"
+          target: "devops"
 
       -       
         name: Deploy Kubernetes
