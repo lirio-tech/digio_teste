@@ -39,6 +39,7 @@ jobs:
           git config --local user.email "diegolirio.dl@gmail.com"
           git config --local user.name "GitHub Action"
           git commit -m "Changes Version" -a
+          git pull origin develop
 
       - 
         name: Push changes
