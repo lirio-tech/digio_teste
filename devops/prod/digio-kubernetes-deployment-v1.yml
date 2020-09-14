@@ -14,7 +14,7 @@ spec:
       app: digio-teste
       provider: fabric8
       group: br.com.digio
-  template:
+  template: 
     metadata:
       labels:
         app: digio-teste
