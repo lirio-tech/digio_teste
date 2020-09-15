@@ -48,7 +48,7 @@ opentracing:
     log-spans: false
     #enable-b3-propagation: true
     udp-sender:
-      host: jaeger-agent
+      host: jaeger
       port: 6831
 
 services:
