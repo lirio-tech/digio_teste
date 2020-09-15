@@ -81,7 +81,7 @@ jobs:
         name: Create Pull Request to master
         id: cpr
         uses: peter-evans/create-pull-request@v3
-        #with:
+        with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Deployed in Develop - Accept if case be ok!
           committer: GitHub Actions <diegolirio.dl@gmail.com>
