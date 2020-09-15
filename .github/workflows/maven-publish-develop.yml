@@ -87,7 +87,8 @@ jobs:
           committer: GitHub Actions <diegolirio.dl@gmail.com>
           #author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           #signoff: false
-          #branch: master
+          branch: develop
+          pushToFork: master
           #delete-branch: false
           title: 'Deployed in Develop'
           body: |
