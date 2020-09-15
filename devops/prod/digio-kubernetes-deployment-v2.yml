@@ -37,7 +37,7 @@ spec:
         - name: SPRING_PROFILES_ACTIVE
           value: develop
         - name: SERVICES_CONTA_URL
-          value: http://10.152.183.200:8080
+          value: http://conta-develop:8080
         image: diegolirio/digio-teste:0.0.29-RELEASE
         imagePullPolicy: Always
         name: spring-boot-starter-parent
