@@ -2,10 +2,10 @@ name: CI/CD Prodution
 
 on:
   release:
-    types: [push, pull_request] 
+    types: [pull_request]
   push:
     branches:    
-      - master     
+      - master
 
 jobs:
   build:
@@ -38,7 +38,8 @@ jobs:
 
           git config --local user.email "diegolirio.dl@gmail.com"
           git config --local user.name "GitHub Action"
-          git commit -m "Deploy Prod - Canary Release " -a
+          git add pom.xml
+          git commit -m "Deploy Prod - Canary Release "
 
       - 
         name: Push changes
