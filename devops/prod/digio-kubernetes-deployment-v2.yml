@@ -4,7 +4,7 @@ metadata:
   labels:
     app: digio-teste
     provider: fabric8
-    version: 0.0.29-RELEASE
+    version: REPLACE_VERSION
     group: br.com.digio
     canary: "true"
   name: digio-teste-v2
@@ -20,7 +20,7 @@ spec:
       labels:
         app: digio-teste
         provider: fabric8
-        version: 0.0.29-RELEASE
+        version: REPLACE_VERSION
         group: br.com.digio
         canary: "true"
       annotations:
@@ -38,7 +38,7 @@ spec:
           value: develop
         - name: SERVICES_CONTA_URL
           value: http://conta-develop:8080
-        image: diegolirio/digio-teste:0.0.29-RELEASE
+        image: diegolirio/digio-teste:REPLACE_VERSION
         imagePullPolicy: Always
         name: spring-boot-starter-parent
         securityContext:
