@@ -1,0 +1,29 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: digio-teste
+spec:
+  host: digio-teste
+  subsets:
+  - name: digio-teste-v1
+    labels:
+      version: 0.0.27-SNAPSHOT
+  - name: digio-teste-v2
+    labels:
+      version: 0.0.29-RELEASE
+
+# apiVersion: networking.istio.io/v1alpha3
+# kind: DestinationRule
+# .........
+# spec:
+#   host: product-page-svc.bookinfo-k8s-helm-istio-canary.svc.cluster.local
+# .......
+#   subsets:
+#   - name: production
+#     labels:
+#       canary: "false"
+#   - name: canary
+#     labels:
+#       canary: "true"
+
+# ---

@@ -6,6 +6,7 @@ metadata:
     provider: fabric8
     version: 0.0.29-RELEASE
     group: br.com.digio
+    canary: "true"
   name: digio-teste-v2
 spec:
   replicas: 1
@@ -21,6 +22,7 @@ spec:
         provider: fabric8
         version: 0.0.29-RELEASE
         group: br.com.digio
+        canary: "true"
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/path: '/actuator/prometheus'
@@ -34,6 +36,8 @@ spec:
               fieldPath: metadata.namespace
         - name: SPRING_PROFILES_ACTIVE
           value: develop
+        - name: SERVICES_CONTA_URL
+          value: http://10.152.183.200:30071
         image: diegolirio/digio-teste:0.0.29-RELEASE
         imagePullPolicy: Always
         name: spring-boot-starter-parent

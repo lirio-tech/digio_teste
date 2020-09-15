@@ -26,9 +26,16 @@ opentracing:
     log-spans: false
     enable-b3-propagation: false
 
+server:
+  port: 8081
+
 logging:
   level:
     org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+
+services:
+  conta:
+    url: http://localhost:8080
 ---
 spring:
   profiles: develop
@@ -43,6 +50,10 @@ opentracing:
     #udp-sender:
     #  host: jaeger
     #  port: 6831
+
+services:
+  conta:
+    url: ${SERVICES_CONTA_URL:http://conta:30071}
 
 
 

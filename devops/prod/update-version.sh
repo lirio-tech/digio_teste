@@ -1,9 +1,9 @@
 SNAPSHOT="SNAPSHOT"
-NEW_VERSION=$(cat pom.xml | grep "^    <version>.*</version>$" | awk -F'[><]' '{print $3}')
+NEW_VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
 
 case "$NEW_VERSION" in
     *$SNAPSHOT* ) echo "Version OK";;
-    * ) echo "Error... version should to be $SNAPSHOT";;
+    * ) echo "Error... version should to be $SNAPSHOT ====> $NEW_VERSION"; exit 1;
 esac
 
 NEW_VERSION_RELEASE=$(echo $NEW_VERSION | sed -e "s/$SNAPSHOT/RELEASE/g")
