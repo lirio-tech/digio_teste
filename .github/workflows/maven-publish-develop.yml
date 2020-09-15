@@ -78,30 +78,19 @@ jobs:
             ls
             sudo microk8s.kubectl apply -f devops/develop/digio-kubernetes.yml
       -
-        name: Create Pull Request to master
-        id: cpr
-        uses: peter-evans/create-pull-request@v3
+        name: pull-request
+        uses: repo-sync/pull-request@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Deployed in Develop - Accept if case be ok!
-          committer: GitHub Actions <diegolirio.dl@gmail.com>
-          #author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          signoff: false
-          branch: master
-          delete-branch: false
-          title: 'Deployed in Develop'
-          body: |
-            Update report
-            - Updated with develop
-
-          labels: |
-            report
-            automated pr
-          assignees: diegolirio
-          reviewers: diegolirio
-          team-reviewers: |
-            owners
-            maintainers
-          #milestone: 1
-          draft: false
+          source_branch: ""                                 # If blank, default: triggered branch
+          destination_branch: "master"                      # If blank, default: master
+          pr_title: "Deployed in Develop"                   # Title of pull request
+          pr_body: ":crown: *An automated PR*"              # Full markdown support, requires pr_title to be set
+          #pr_template: ".github/PULL_REQUEST_TEMPLATE.md"   # Path to pull request template, requires pr_title to be set, excludes pr_body
+          pr_reviewer: "diegolirio"                         # Comma-separated list (no spaces)
+          pr_assignee: "diegolirio"                         # Comma-separated list (no spaces)
+          pr_label: "diegolirio"                            # Comma-separated list (no spaces)
+          #pr_milestone: "Milestone 1"                       # Milestone name
+          #pr_draft: true                                    # Creates pull request as draft
+          pr_allow_empty: false                              # Creates pull request even if there are no changes
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
