@@ -47,7 +47,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: develop
-
       - 
         name: Publish to DockerHub
         run: |
@@ -78,4 +77,31 @@ jobs:
           script: |
             ls
             sudo microk8s.kubectl apply -f devops/develop/digio-kubernetes.yml
+      -
+        name: Create Pull Request to master
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Deployed in Develop - Accept if case be ok!
+          committer: GitHub Actions <diegolirio.dl@gmail.com>
+          #author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: master
+          delete-branch: false
+          title: 'Deployed in Develop'
+          body: |
+            Update report
+            - Updated with develop
+
+          labels: |
+            report
+            automated pr
+          assignees: diegolirio
+          reviewers: diegolirio
+          team-reviewers: |
+            owners
+            maintainers
+          #milestone: 1
+          draft: false
 
