@@ -9,7 +9,7 @@ items:
       expose: "true"
       app: digio-teste-develop
       provider: fabric8
-      version: 0.0.44-SNAPSHOT
+      version: 0.0.45-SNAPSHOT
       group: br.com.digio
     name: digio-teste-develop    
   spec:
@@ -29,7 +29,7 @@ items:
     labels:
       app: digio-teste-develop
       provider: fabric8
-      version: 0.0.44-SNAPSHOT
+      version: 0.0.45-SNAPSHOT
       group: br.com.digio
     name: digio-teste-develop
   spec:
@@ -44,7 +44,7 @@ items:
         labels:
           app: digio-teste-develop
           provider: fabric8
-          version: 0.0.44-SNAPSHOT
+          version: 0.0.45-SNAPSHOT
           group: br.com.digio
         annotations:
           prometheus.io/scrape: 'true'
@@ -61,7 +61,7 @@ items:
             value: develop
           - name: SERVICES_CONTA_URL
             value: http://conta-develop:8080
-          image: diegolirio/digio-teste:0.0.44-SNAPSHOT
+          image: diegolirio/digio-teste:0.0.45-SNAPSHOT
           imagePullPolicy: Always
           name: spring-boot-starter-parent
           securityContext:
