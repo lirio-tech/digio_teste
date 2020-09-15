@@ -10,7 +10,7 @@
 
     <groupId>br.com.digio</groupId>
     <artifactId>digio-teste</artifactId>
-    <version>0.0.35-SNAPSHOT</version>
+    <version>0.0.36-SNAPSHOT</version>
     <name>digio-teste</name>
     <description>Demo project for Spring Boot</description>
 
