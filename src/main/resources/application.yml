@@ -14,7 +14,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics,prometheus,mongodb
+        include: health,info,metrics,prometheus,mongodb,configprops
 ---
 spring:
   profiles: default, local
