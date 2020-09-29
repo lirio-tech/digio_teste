@@ -63,6 +63,6 @@ items:
             value: http://conta-develop:8080
           image: diegolirio/digio-teste:0.0.52-SNAPSHOT
           imagePullPolicy: Always
-          name: spring-boot-starter-parent
+          name: digio-teste
           securityContext:
             privileged: false

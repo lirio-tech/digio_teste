@@ -40,6 +40,6 @@ spec:
           value: http://conta:8080
         image: diegolirio/digio-teste:REPLACE_VERSION
         imagePullPolicy: Always
-        name: spring-boot-starter-parent
+        name: digio-teste
         securityContext:
           privileged: false
