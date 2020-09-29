@@ -53,7 +53,7 @@ opentracing:
 
 services:
   conta:
-    url: ${SERVICES_CONTA_URL:http://conta:30071}
+    url: ${SERVICES_CONTA_URL:http://conta:8080}
 
 
 
