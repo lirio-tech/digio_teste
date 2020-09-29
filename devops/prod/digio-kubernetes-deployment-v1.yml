@@ -40,6 +40,6 @@ spec:
           value: http://10.152.183.200:8080
         image: diegolirio/digio-teste:0.0.46-RELEASE
         imagePullPolicy: Always
-        name: spring-boot-starter-parent
+        name: digio-teste
         securityContext:
           privileged: false
